@@ -1,0 +1,21 @@
+{
+  "name": "gql-code-fist",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "apollo-server": "^3.6.6",
+    "class-validator": "^0.13.2",
+    "graphql": "15.3.0",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint": "^8.12.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  }
+}
