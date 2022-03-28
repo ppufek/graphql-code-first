@@ -1,13 +1,11 @@
-import { buildSchema } from 'type-graphql'
+import { BuildSchemaOptions, buildSchemaSync } from 'type-graphql'
 import { UserResolver } from './resolvers/User.resolver'
 import { GraphQLSchema } from 'graphql'
 
-export default async function getSchema(): Promise<GraphQLSchema> {
-    return buildSchema({
-        resolvers: [
-            UserResolver
-        ],
-        // See https://github.com/MichalLytek/type-graphql/issues/150
+export default function getSchema(options?: Pick<BuildSchemaOptions, 'authChecker'>): GraphQLSchema {
+    return buildSchemaSync({
+        ...options,
+        resolvers: [UserResolver],
         validate: false,
     })
 }
