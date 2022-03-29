@@ -6,10 +6,7 @@ import Company from '../types/Company.type'
 export class UserResolver {
     @Query(() => User, { nullable: true })
     user(
-        @Arg('id', () => ID,
-            {
-                description: 'id of the user',
-            }) id: string
+        @Arg('id', () => ID) id: string
     ): User | null {
         return null
     }
