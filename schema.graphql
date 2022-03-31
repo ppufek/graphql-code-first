@@ -6,7 +6,8 @@
 
 type Query {
   trackedSignals(input: TrackedSignalsInput): [Signal!]!
-  vehicles: [Vehicle!]!
+  vehicle(id: Int!): Vehicle!
+  vehicles(year: Int!): [Vehicle!]!
   user(id: ID!): User
   users: [User!]!
 }
@@ -34,6 +35,7 @@ type Vehicle {
   id: ID!
   name: String!
   vin: String!
+  price: String!
   signals: [Signal!]!
 }
 
