@@ -7,9 +7,16 @@ import { GraphQLString } from 'graphql'
 })
 export default class User {
 
+    constructor(id: number, username: string) {
+        this.id = id
+        this.username = username
+    }
+
     @Field( () => ID)
-        id: string
+        id: number
 
     @Field(() => GraphQLString)
-        name: string
+        username: string
+
+    password: string
 }

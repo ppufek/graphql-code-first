@@ -8,9 +8,9 @@ import { GraphQLInt } from 'graphql'
 export class VehicleResolver {
 
     @Query(() => Vehicle)
-    async vehicle(@Arg('id', () => GraphQLInt) id: number): Promise<Vehicle> {
+    public async vehicle(@Arg('vehicleId', () => GraphQLInt) vehicleId: number): Promise<Vehicle> {
 
-        const response = await fetch(`https://myfakeapi.com/api/cars/${id}`)
+        const response = await fetch(`https://myfakeapi.com/api/cars/${vehicleId}`)
         const body = await response.json()
 
         const existingCar = body['Car']
@@ -24,7 +24,7 @@ export class VehicleResolver {
     }
 
     @Query(() => [Vehicle])
-    async vehicles(@Arg('year', () => GraphQLInt) year: number): Promise<Vehicle[]> {
+    public async vehicles(@Arg('year', () => GraphQLInt) year: number): Promise<Vehicle[]> {
 
         const response = await fetch(`https://myfakeapi.com/api/cars/year/${year}`)
 
@@ -42,7 +42,7 @@ export class VehicleResolver {
     }
 
     @FieldResolver(() => [Signal])
-    signals(
+    public signals(
         @Root() vehicle: Vehicle
     ): Signal[] {
         return []
