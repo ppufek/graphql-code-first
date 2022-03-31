@@ -3,17 +3,13 @@ import 'reflect-metadata'
 import { ApolloServer } from 'apollo-server'
 import getSchema from './graphql/buildSchema'
 
-async function main() {
-    const schema = await getSchema()
 
-    const server = new ApolloServer({
-        schema
-    })
+const schema = getSchema()
 
-    server.listen().then(({ url }) => {
-        console.log(`🚀 Server ready at ${url}`)
-    })
-}
+const server = new ApolloServer({
+    schema
+})
 
-main()
-
+server.listen().then(({ url }) => {
+    console.log(`🚀 Server ready at ${url}`)
+})

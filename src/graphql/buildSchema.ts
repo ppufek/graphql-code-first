@@ -8,6 +8,5 @@ export default function getSchema(options?: Pick<BuildSchemaOptions, 'authChecke
     return buildSchemaSync({
         ...options,
         resolvers: [UserResolver, VehicleResolver, SignalResolver],
-        validate: false,
     })
 }
