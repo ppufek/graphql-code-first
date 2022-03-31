@@ -25,6 +25,6 @@ export class UserResolver {
             'The vehicles of the user, or any empty list if they have none.',
     })
     vehicles(@Root() user: User): Vehicle[] {
-        return [new Vehicle('', 'Batmobil')]
+        return [new Vehicle('', 'Batmobil', '4TAVN01D1PZ071556', '$10000')]
     }
 }
