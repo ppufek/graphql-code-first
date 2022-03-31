@@ -1,6 +1,6 @@
 import { Arg, FieldResolver, ID, Query, Resolver, Root } from 'type-graphql'
 import User from '../types/User.type'
-import Company from '../types/Company.type'
+import Vehicle from '../types/Vehicle.type'
 
 @Resolver(() => User)
 export class UserResolver {
@@ -8,19 +8,22 @@ export class UserResolver {
     user(
         @Arg('id', () => ID) id: string
     ): User | null {
-        return null
+        return {
+            id: '',
+            name: ''
+        }
     }
 
     @Query(() => [User])
-    users(): Array<User> {
+    users(): User[] {
         return []
     }
 
-    @FieldResolver(() => [Company], {
+    @FieldResolver(() => [Vehicle], {
         description:
-            'The companies of the user, or any empty list if they have none.',
+            'The vehicles of the user, or any empty list if they have none.',
     })
-    companies(@Root() user: User): Array<Company> {
-        return []
+    vehicles(@Root() user: User): Vehicle[] {
+        return [new Vehicle('', 'Batmobil')]
     }
 }
