@@ -4,6 +4,7 @@ import Vehicle from '../types/Vehicle.type'
 
 @Resolver(() => User)
 export class UserResolver {
+
     @Query(() => User, { nullable: true })
     user(
         @Arg('id', () => ID) id: string

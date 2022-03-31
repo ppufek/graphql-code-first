@@ -5,8 +5,36 @@
     # ------------------------------------------------ #
 
 type Query {
+  trackedSignals(input: TrackedSignalsInput): [Signal!]!
+  vehicles: [Vehicle!]!
   user(id: ID!): User
   users: [User!]!
+}
+
+type Signal {
+  id: ID!
+  name: String!
+  samplingPeriod: SamplingPeriodEnum!
+}
+
+"""Time difference between signal occurrence"""
+enum SamplingPeriodEnum {
+  MS_10
+  MS_20
+  MS_100
+}
+
+input TrackedSignalsInput {
+  vehicleId: ID!
+  isTracked: Boolean!
+}
+
+"""Registered user vehicle in the system."""
+type Vehicle {
+  id: ID!
+  name: String!
+  vin: String!
+  signals: [Signal!]!
 }
 
 """User of the app."""
@@ -14,14 +42,6 @@ type User {
   id: ID!
   name: String!
 
-  """The companies of the user, or any empty list if they have none."""
-  companies: [Company!]!
-}
-
-"""Company of the user."""
-type Company {
-  id: ID!
-
-  """The name of the company."""
-  name: String!
+  """The vehicles of the user, or any empty list if they have none."""
+  vehicles: [Vehicle!]!
 }

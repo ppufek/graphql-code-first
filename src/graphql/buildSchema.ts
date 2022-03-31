@@ -1,12 +1,11 @@
-import { BuildSchemaOptions, buildSchemaSync } from 'type-graphql'
-import { UserResolver } from './resolvers/User.resolver'
+import { BuildSchemaOptions, buildSchemaSync, NonEmptyArray } from 'type-graphql'
 import { GraphQLSchema } from 'graphql'
-import { VehicleResolver } from './resolvers/Vehicle.resolver'
-import { SignalResolver } from './resolvers/Signal.resolver'
+
+import * as resolvers from './resolvers'
 
 export default function getSchema(options?: Pick<BuildSchemaOptions, 'authChecker'>): GraphQLSchema {
     return buildSchemaSync({
         ...options,
-        resolvers: [UserResolver, VehicleResolver, SignalResolver],
+        resolvers: [...Object.values(resolvers)] as unknown as NonEmptyArray<string>,
     })
 }

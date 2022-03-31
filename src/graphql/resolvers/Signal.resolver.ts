@@ -4,8 +4,11 @@ import Signal from '../types/Signal.type'
 
 @Resolver()
 export class SignalResolver {
+
     @Query(() => [Signal])
-    trackedSignals(@Arg('input', () => TrackedSignalsInput, { nullable: true }) input: TrackedSignalsInput) {
+    trackedSignals(
+        @Arg('input', () => TrackedSignalsInput, { nullable: true }) input: TrackedSignalsInput
+    ): Signal[] {
         return []
     }
 }
